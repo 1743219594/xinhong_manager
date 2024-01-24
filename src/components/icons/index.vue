@@ -1,11 +1,10 @@
 <script setup>
-import {createuserinfo} from '@/stores/userinfo.js'
 import { computed, ref,onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
 import Driver from "driver.js/dist/driver.min.js";
 import "driver.js/dist/driver.min.css";
-let userinfo=createuserinfo()
+import { use } from 'echarts';
+
 let router=useRouter()
 let route=useRoute()
 let path=computed(()=>{
@@ -35,13 +34,15 @@ let iscollapse=ref(false)
 let changeCollapse=()=>{
   iscollapse.value=!iscollapse.value
 }
+let userinfo=ref({})
 onMounted(() => {
   if(!localStorage.getItem('first'))
   {
     localStorage.setItem('first','true')
     showTips();
   }
-  
+   userinfo.value=JSON.parse(localStorage.getItem('userinfo'))
+
 })
 function showTips() {
   const driver = new Driver({
@@ -52,7 +53,7 @@ function showTips() {
   })
   const steps = [
     {
-      element: '.aside',
+      element: '.menu',
       popover: {
         title: '功能模块',
         description: '点击即可切换',
@@ -115,7 +116,7 @@ let loginout=()=>{
                         </template>
                        
                         <el-menu-item index="1-1" class="menu-item"><router-link to="/index/userdata" class="router-link-custom"><el-icon><TrendCharts /></el-icon>用户数据</router-link></el-menu-item>
-                        <el-menu-item index="1-1" class="menu-item"><router-link to="/index/teacherMangaer" class="router-link-custom">教师管理</router-link></el-menu-item>
+                        <el-menu-item index="1-1" class="menu-item"><router-link to="/index/teacherMangaer" class="router-link-custom"><el-icon><User /></el-icon>教师管理</router-link></el-menu-item>
                         <el-menu-item index="1-2" class="menu-item"><router-link to="/index/ranking" class="router-link-custom"><el-icon><Medal /></el-icon>积分排行</router-link></el-menu-item>
                     </el-sub-menu>
                      <el-sub-menu index="2" class="sub-menu">
@@ -123,18 +124,19 @@ let loginout=()=>{
                           <el-icon  style="margin-right: 2vw;"><List /></el-icon>
                             推文管理
                         </template>
-                
-                        <el-menu-item index="2-1" class="menu-item">推文数据</el-menu-item>
-                        <el-menu-item index="2-2" class="menu-item"><router-link to="/index/tweetdata" class="router-link-custom">推文详情</router-link></el-menu-item>
+                        
+                        <el-menu-item index="2-1" class="menu-item"><router-link to="/index/tweetdetail" class="router-link-custom"><el-icon><Histogram /></el-icon>推文数据</router-link></el-menu-item>
+                        <el-menu-item index="2-2" class="menu-item"><router-link to="/index/tweetdata" class="router-link-custom"><el-icon><Memo /></el-icon>推文详情</router-link></el-menu-item>
                       
                     </el-sub-menu>
                      <el-sub-menu index="3" class="sub-menu">
                         <template #title>
                           <el-icon style="margin-right: 2vw;"><Calendar /></el-icon>活动管理
                         </template>
-                
-                        <el-menu-item index="3-1" class="menu-item">活动数据</el-menu-item>
-                        <el-menu-item index="3-2" class="menu-item">发布活动</el-menu-item>
+                       
+                        <el-menu-item index="3-1" class="menu-item"><el-icon><Opportunity /></el-icon>活动数据</el-menu-item>
+                        <el-menu-item index="3-2" class="menu-item"><router-link to="/index/activityMangaer" class="router-link-custom"> <el-icon><Flag /></el-icon>活动详情</router-link></el-menu-item>
+                        <el-menu-item index="3-3" class="menu-item"><router-link to="/index/question" class="router-link-custom"> <el-icon><Present /></el-icon>答题详情</router-link></el-menu-item>
                     </el-sub-menu>
                     <el-sub-menu index="4" class="sub-menu">
                         <template #title>
@@ -156,7 +158,7 @@ let loginout=()=>{
                 </el-breadcrumb>
               </div>
                 <div class="avat">
-                    <el-text style="margin-right: 20px;">{{ userinfo.nick_name }}</el-text>
+                    <el-text style="margin-right: 20px;font-size: larger;">{{userinfo.nickname }}</el-text>
                     <el-avatar :src="userinfo.photourl" style="margin-right: 20px;"/>
                     <el-text class="mx-1" type="primary" @click="loginout" style="cursor: pointer;">退出登录</el-text>
                 </div>
@@ -165,7 +167,7 @@ let loginout=()=>{
             <el-scrollbar class="scrollbare">
                 <router-view v-slot="{ Component }">
                   <transition name="fade" mode="out-in">
-                    <component :is="Component"  :key="route.path"/>
+                    <component :is="Component"  :key="route.path" style="height: 100%;"/>
                   </transition>
                 </router-view>
             </el-scrollbar>
@@ -198,6 +200,7 @@ html,body{
 .main{
   height: 100vh;
     background-color: #f0f2f5;
+    width:20vw;
 }
 
 .menu-item{

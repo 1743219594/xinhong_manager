@@ -135,12 +135,14 @@ let allnumber=ref(0)
 .main{
       display: flex;
       flex-direction: column;
-      align-items: center;  
-      box-sizing: content-box;
-      padding: 30px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 100%;
+      align-items:center;
 }
 .header{
-    width: 100%;
+    
+    width: 90%;
     height: 150px;
     display: flex;
     justify-content: space-between;
@@ -167,9 +169,10 @@ let allnumber=ref(0)
     font-size: 20px;
 }
 #graphics{
-    width: 100%;
+    width: 90%;
     height: 350px;
     background-color: #fff;
     margin-top: 60px;
+    
 }
 </style>

@@ -37,12 +37,27 @@ onMounted(()=>{
         }
     })
 })
+let isshow=ref(false)
+let scroll=(oj)=>{
+    if(oj.scrollTop>=300)
+    {
+        isshow.value=true
+    }
+    else{
+        isshow.value=false;
+    }
+}
+let returnTop=()=>{
+   scroll.setScrollTop(0);
+}
 </script>
 <template>
-    <div class="main">
+    <el-scrollbar class="main" always @scroll="scroll" ref="scroll">
+        <div class="backtop" v-show="isshow"><el-icon style="font-size:30px;" @click="returnTop"><Top /></el-icon></div>
     <div class="center">
+    
     <el-button type="primary" size="large" @click="logout"><el-icon><Download /></el-icon>导出</el-button>
-    <el-table :data="TotalRanking" style="width: 100%;margin-top: 20px;;" stripe border :cell-style="{ textAlign: 'center' }" :header-cell-style="{ 'text-align': 'center' }" height="100%"
+    <el-table :data="TotalRanking" style="width: 100%;margin-top: 20px;" stripe border :cell-style="{ textAlign: 'center' }" :header-cell-style="{ 'text-align': 'center' }" height="100%"
         fit="false" :default-sort="[{ prop: 'integral', order: 'descending' },{prop:'yearintegral',order:'descending'},{prop:'monthlyintegral',order:'descending'}]" ref="myTable">
         <el-table-column type="index" label="序号" width="150">
       </el-table-column>
@@ -54,18 +69,35 @@ onMounted(()=>{
             <el-table-column prop="studentid" label="学号" width="180"/>
             </el-table>
     </div>
-  </div>
+</el-scrollbar>
     
 </template>
 <style scoped>
 .main{
     width: 100%;
+    height: calc(100vh - 60px) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+ 
 }
 .center{
     margin-top: 10px;
+    height: 100%;
 
+}
+.backtop{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    border: 3px solid #79bbff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #79bbff;
 }
 </style>

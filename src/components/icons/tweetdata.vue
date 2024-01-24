@@ -36,7 +36,7 @@ let upload=()=>{
                 
                 if(res.data.status==202)
                 {
-                    ElMessage({ type: 'success',message: '删除成功' })
+                    ElMessage({ type: 'success',message: '发布成功' })
                 }
                 else{
                     ElMessage('发布失败')
@@ -50,16 +50,7 @@ onMounted(()=>{
     api.getalltweet((res)=>{
         if(res.data.status==200)
         {
-            let temp={
-                content:'1',
-                id:50,
-                like_num:5,
-                read_num:10,
-                o_photo:'2',
-                send_time:"111",
-                title:'111'
-            }
-            res.data.data.push(temp)
+            
             datalist.value=res.data.data
         }
         else{
@@ -125,7 +116,7 @@ let deleteTweet=(title)=>{
             <el-table-column prop="read_num" label="阅读数" width="120"  sortable/>
             <el-table-column prop="o_photo" label="封面照片" width="120">
                 <template v-slot="{ row }">
-                    <el-image :src="row.o_photo" alt="封面照片" loading="lazy" style="max-width: 100%; max-height: 100%;" preview-teleported></el-image>
+                    <el-image :src="row.o_photo" alt="封面照片" loading="lazy" :preview-src-list="[row.o_photo]" style="max-width: 100%; max-height: 100%;" preview-teleported></el-image>
                 </template>
             </el-table-column>
             <el-table-column prop="content" label="内容照片" width="400">
@@ -149,7 +140,8 @@ let deleteTweet=(title)=>{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100%
+        height: 100%;
+        width: 100%;
     }
     .center{
         width: 90%;

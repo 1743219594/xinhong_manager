@@ -147,3 +147,108 @@ export const getTeacher=(callback)=>{
         callback(Response)
     })
 }
+/* 获取已发布的推文数量，总点赞数，总阅读数,总评论数 */
+export const getTweetData=(callback)=>{
+    axios.post(baseURL+'getTweetData',{
+        headers:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+    }).then((Response=>{
+        callback(Response)
+    }))
+}
+/* 发布活动 */
+export const upload_cover=(formdata,callback)=>{
+    axios.post(baseURL+'moviecover',formdata,{
+        headers:{
+            'content-type':'multipart/form-data'
+        },
+        
+    }).then((
+      
+    )=>{
+        callback()
+    })
+    
+}
+/* 发布活动 */
+export const upload_activity=(formdata,callback)=>{
+    axios.post(baseURL+'activity',formdata,{
+        headers:{
+            'content-type':'multipart/form-data'
+        },
+        
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+    
+}
+/* 获取发布的活动 */
+export const getactivity=(callback)=>{
+    axios.post(baseURL+'getActivity',{
+        headers:{
+            'content-type':'multipart/form-data'
+        },
+        
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+    
+}
+/* 获取活动的报名情况 */
+export const getRegistrationlist=(activityid,callback)=>{
+    axios.post(baseURL+'getRegistrationlist',{activityid:activityid},{
+        headers:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+        
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+    
+}
+/* 发布题目 */
+export const upload_question=(formdata,callback)=>{
+   
+    axios.post(baseURL+'upload_question',formdata,{
+        headers:{
+            'content-type':'multipart/form-data'
+        },
+        
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+    
+}
+/* 获取发布的题目 */
+export const getQuestion=(callback)=>{
+    axios.post(baseURL+'getQuestion',{
+        headers:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+}
+/* 获取某道题的答题情况 */
+export const getaquestion=(id,callback)=>{
+    axios.post(baseURL+'getaquestion',{id:id},{
+        headers:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+}

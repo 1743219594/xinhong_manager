@@ -6,6 +6,9 @@ import ranking from "@/components/icons/ranking.vue"
 import message from "@/components/icons/message.vue"
 import tweetdata from "@/components/icons/tweetdata.vue"
 import teacherMangaer from '@/components/icons/teacherMangaer.vue'
+import tweetdetail from '@/components/icons/tweetdetail.vue'
+import activityMangaer from '@/components/icons/activityMangaer.vue'
+import question from '@/components/icons/question.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes:[
@@ -52,6 +55,21 @@ const router = createRouter({
           path:'teacherMangaer',
           component:teacherMangaer,
           meta:{breadcrumbName:'教师管理'}
+        },
+        {
+          path:'tweetdetail',
+          component:tweetdetail,
+          meta:{breadcrumbName:'推文数据'}
+        },
+        {
+          path:'activityMangaer',
+          component:activityMangaer,
+          meta:{breadcrumbName:'活动详情'}
+        },
+        {
+          path:'question',
+          component:question,
+          meta:{breadcrumbName:'答题详情'}
         }
       ]
     }

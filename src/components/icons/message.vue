@@ -82,7 +82,8 @@ let reply_query=()=>{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%
+    height: 100%;
+    width: 100%;
 }
 .send,.accept{
     width:90%;

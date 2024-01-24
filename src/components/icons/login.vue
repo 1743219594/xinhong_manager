@@ -92,13 +92,13 @@
 .center{
     position:absolute;
     width: 30vw;
-    height: 60vh;
+    height: 55vh;
     right: 30vw;
     top: 50%;
     transform: translateY(-50%);
    background-color:antiquewhite;
    border-radius: 30px;
-   opacity: 0.7;
+   opacity: 0.8;
 }
 .header{
     width: 100%;
