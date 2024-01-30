@@ -76,6 +76,15 @@ import * as XLSX from 'xlsx'
         if(res.data.status==200)
         {
             ElMessage({ type: 'success',message: '发布成功' })
+            api.getQuestion((res)=>{
+            if(res.data.status==200)
+            {
+                questionlist.value=res.data.data
+            }
+            else{
+                ElMessage('获取失败')
+            }
+        })
         }
         else{
             ElMessage('发布失败')

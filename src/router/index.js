@@ -9,6 +9,7 @@ import teacherMangaer from '@/components/icons/teacherMangaer.vue'
 import tweetdetail from '@/components/icons/tweetdetail.vue'
 import activityMangaer from '@/components/icons/activityMangaer.vue'
 import question from '@/components/icons/question.vue'
+import race from '@/components/icons/race.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes:[
@@ -70,6 +71,11 @@ const router = createRouter({
           path:'question',
           component:question,
           meta:{breadcrumbName:'答题详情'}
+        },
+        {
+          path:'race',
+          component:race,
+          meta:{breadcrumbName:'比赛详情'}
         }
       ]
     }

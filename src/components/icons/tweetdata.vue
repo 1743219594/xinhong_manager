@@ -37,6 +37,16 @@ let upload=()=>{
                 if(res.data.status==202)
                 {
                     ElMessage({ type: 'success',message: '发布成功' })
+                    api.getalltweet((res)=>{
+                    if(res.data.status==200)
+                    {
+                        
+                        datalist.value=res.data.data
+                    }
+            else{
+                ElMessage('获取出错！！！')
+            }
+        })
                 }
                 else{
                     ElMessage('发布失败')
@@ -76,6 +86,16 @@ let deleteTweet=(title)=>{
         type: 'success',
         message: '删除成功',
       })
+        api.getalltweet((res)=>{
+            if(res.data.status==200)
+            {
+                
+                datalist.value=res.data.data
+            }
+            else{
+                ElMessage('获取出错！！！')
+            }
+        })
         }
         else{
             ElMessage('删除失败')

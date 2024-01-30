@@ -133,10 +133,9 @@ let loginout=()=>{
                         <template #title>
                           <el-icon style="margin-right: 2vw;"><Calendar /></el-icon>活动管理
                         </template>
-                       
-                        <el-menu-item index="3-1" class="menu-item"><el-icon><Opportunity /></el-icon>活动数据</el-menu-item>
-                        <el-menu-item index="3-2" class="menu-item"><router-link to="/index/activityMangaer" class="router-link-custom"> <el-icon><Flag /></el-icon>活动详情</router-link></el-menu-item>
-                        <el-menu-item index="3-3" class="menu-item"><router-link to="/index/question" class="router-link-custom"> <el-icon><Present /></el-icon>答题详情</router-link></el-menu-item>
+                        <el-menu-item index="3-1" class="menu-item"><router-link to="/index/activityMangaer" class="router-link-custom"> <el-icon><Flag /></el-icon>活动详情</router-link></el-menu-item>
+                        <el-menu-item index="3-2" class="menu-item"><router-link to="/index/question" class="router-link-custom"> <el-icon><Present /></el-icon>答题详情</router-link></el-menu-item>
+                        <el-menu-item index="3-3" class="menu-item"><router-link to="/index/race" class="router-link-custom"> <el-icon><TrophyBase /></el-icon>比赛详情</router-link></el-menu-item>
                     </el-sub-menu>
                     <el-sub-menu index="4" class="sub-menu">
                         <template #title>

@@ -126,7 +126,16 @@ let allnumber=ref(0)
                     
                 </div>
             </div>
-            <div class="head-item"></div>
+            <div class="head-item" style="color: orange;">
+                <el-icon size="90px">
+                    <Avatar />
+                </el-icon>
+                <div class="showdata">
+                    <div>学生数量</div>
+                    <div>{{ allnumber-teacherNumber }}</div>
+                    
+                </div>
+            </div>
         </div>
         <div id="graphics"></div>
     </div>

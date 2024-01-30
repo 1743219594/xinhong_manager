@@ -252,3 +252,39 @@ export const getaquestion=(id,callback)=>{
         callback(Response)
     })
 }
+/* 发布比赛 */
+export const race=(formdata,callback)=>{
+    axios.post(baseURL+'race',formdata,{
+        headers:{
+            'content-type':'multipart/form-data'
+        }
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+}
+/* 获取比赛信息 */
+export const getrace=(callback)=>{
+    axios.post(baseURL+'getrace',{
+        headers:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+}
+/* 上传比赛结果 */
+export const uploadresult=(id,result,callback)=>{
+    axios.post(baseURL+'uploadresult',{id:id,result:result},{
+        headers:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+    }).then((
+        Response
+    )=>{
+        callback(Response)
+    })
+}
